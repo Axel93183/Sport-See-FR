@@ -1,0 +1,14 @@
+services:
+  front-end:
+    build:
+      context: ./Sport-See-FR_Front-End
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+  back-end:
+    build:
+      context: ./Sport-See-FR_Back-End
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
