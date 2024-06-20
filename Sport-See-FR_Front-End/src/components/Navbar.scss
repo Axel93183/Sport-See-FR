@@ -1,0 +1,28 @@
+@import "../assets/sass/main.scss";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 91px;
+  background-color: black;
+  padding-left: 30px;
+
+  img {
+    width: 178px;
+    height: 61px;
+  }
+
+  .nav > ul {
+    display: flex;
+    gap: 200px;
+    list-style-type: none;
+    padding-right: 90px;
+
+    li a {
+      @include font-24px-w500;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
