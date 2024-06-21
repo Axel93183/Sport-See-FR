@@ -1,4 +1,4 @@
-@import "../assets/sass/main.scss";
+@import "../../assets/sass/main.scss";
 
 .navbar {
   display: flex;
@@ -7,7 +7,11 @@
   height: 91px;
   background-color: black;
   padding-left: 30px;
-
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 99;
   img {
     width: 178px;
     height: 61px;

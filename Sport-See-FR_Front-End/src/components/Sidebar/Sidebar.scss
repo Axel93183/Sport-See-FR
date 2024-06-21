@@ -1,0 +1,25 @@
+@import "../../assets/sass/main.scss";
+
+.sidebar {
+  @include center-flex;
+  width: 117px;
+  background-color: black;
+  position: absolute;
+  height: 100vh;
+
+  .icon-container > ul {
+    @include center-flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .copyright {
+    @include font-12px-w500;
+    color: white;
+    position: absolute;
+    bottom: 60px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: start;
+  }
+}

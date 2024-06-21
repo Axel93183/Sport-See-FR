@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/images/logo-sportsee.png";
+import logo from "../../assets/images/logo-sportsee.png";
 import "./Navbar.scss";
 
 function Navbar() {
