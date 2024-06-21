@@ -1,25 +1,39 @@
+// sidebar.scss
 @import "../../assets/sass/main.scss";
 
 .sidebar {
   @include center-flex;
-  width: 117px;
-  background-color: black;
+  width: $sidebar-width;
+  background-color: $color-black;
   position: absolute;
   height: 100vh;
 
   .icon-container > ul {
     @include center-flex;
     flex-direction: column;
-    gap: 20px;
+    gap: $gap-small;
   }
 
   .copyright {
     @include font-12px-w500;
-    color: white;
+    color: $color-white;
     position: absolute;
-    bottom: 60px;
+    bottom: $bottom-spacing;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     text-align: start;
+  }
+
+  // Media query for screens of 1024x780
+  @media (max-width: 1024px) {
+    width: $sidebar-width-70;
+
+    .icon-container > ul {
+      gap: $gap-small-70;
+    }
+
+    .copyright {
+      bottom: $bottom-spacing-70;
+    }
   }
 }

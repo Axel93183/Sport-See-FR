@@ -1,32 +1,51 @@
+// navbar.scss
 @import "../../assets/sass/main.scss";
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 91px;
-  background-color: black;
-  padding-left: 30px;
+  height: $nav-height;
+  background-color: $color-black;
+  padding-left: $padding-left;
+  padding-right: $padding-right; // Ajouté pour uniformiser le padding
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 99;
+
   img {
-    width: 178px;
-    height: 61px;
+    width: $img-width;
+    height: $img-height;
   }
 
   .nav > ul {
     display: flex;
-    gap: 200px;
+    gap: $gap-large;
     list-style-type: none;
-    padding-right: 90px;
+    padding-right: 0;
 
     li a {
       @include font-24px-w500;
       text-decoration: none;
-      color: white;
+      color: $color-white;
+    }
+  }
+
+  // Media query for screens of 1024x780
+  @media (max-width: 1024px) {
+    height: $nav-height-70;
+    padding-left: $padding-left-70;
+    padding-right: $padding-right-70;
+
+    img {
+      width: $img-width-70;
+      height: $img-height-70;
+    }
+
+    .nav > ul {
+      gap: $gap-large-70;
     }
   }
 }
