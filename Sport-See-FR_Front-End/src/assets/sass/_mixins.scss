@@ -1,4 +1,3 @@
-// _mixins.scss
 @mixin font-12px-w500 {
   font-size: $font-size-12;
   font-weight: $font-weight-500;
@@ -42,6 +41,11 @@
 @mixin font-24px-w700 {
   font-size: $font-size-24;
   font-weight: $font-weight-700;
+}
+
+@mixin font-48px-w500 {
+  font-size: $font-size-48;
+  font-weight: $font-weight-500;
 }
 
 @mixin font-48px-w700 {
