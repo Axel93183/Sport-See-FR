@@ -1,16 +1,20 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Error404 from "./pages/Error404/Error404";
+
 import "./App.scss";
-import Navbar from "./components/Navbar/Navbar.js";
-import Sidebar from "./components/Sidebar/Sidebar.js";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Sidebar />
-      </div>
-    </Router>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Error404 />} />
+          <Route path="/error" element={<Error404 />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

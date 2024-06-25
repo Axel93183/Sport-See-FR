@@ -32,7 +32,7 @@ function Sidebar() {
           </li>
         </ul>
       </nav>
-      <p className="copyright">Copiryght, SportSee 2020</p>
+      <p className="copyright">Copiryght, SportSee 2024</p>
     </div>
   );
 }

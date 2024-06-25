@@ -46,6 +46,10 @@
 
     .nav > ul {
       gap: $gap-large-70;
+
+      li a {
+        font-size: $font-size-24-70;
+      }
     }
   }
 }
