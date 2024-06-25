@@ -1,44 +1,41 @@
 import { useEffect, useState } from "react";
+
+import apiService from "../../services/apiService";
+
 import emoji from "../../assets/emoji/emoji.png";
-import mockActivity from "../../utils/mockActivity";
-import mockAverageSessions from "../../utils/mockAverageSessions";
-import mockPerformance from "../../utils/mockPerformance";
-import mockUserInfos from "../../utils/mockUserInfos";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
 
 import "./Home.scss";
 
 function Home() {
-  const [userInfos, setUserInfos] = useState(null);
-
   const userId = 18;
 
+  const [userInfos, setUserInfos] = useState(null);
+
   const fetchUserInformations = () => {
-    const userInfos = mockUserInfos.find((user) => user.id === userId);
-    console.log("User Informations:", userInfos);
-    setUserInfos(userInfos);
+    apiService.getUserInformations(userId).then((userInfos) => {
+      setUserInfos(userInfos);
+      console.log("User Informations:", userInfos);
+    });
   };
 
   const fetchUserActivityInformations = () => {
-    const activity = mockActivity.find(
-      (activity) => activity.userId === userId
-    );
-    console.log("User Activity Informations:", activity);
+    apiService.getUserActivityInformations(userId).then((activity) => {
+      console.log("User Activity Informations:", activity);
+    });
   };
 
   const fetchUserAverageSessions = () => {
-    const averageSessions = mockAverageSessions.find(
-      (session) => session.userId === userId
-    );
-    console.log("User Average Sessions:", averageSessions);
+    apiService.getUserAverageSessions(userId).then((averageSessions) => {
+      console.log("User Average Sessions:", averageSessions);
+    });
   };
 
   const fetchUserPerformance = () => {
-    const performance = mockPerformance.find(
-      (performance) => performance.userId === userId
-    );
-    console.log("User Performance:", performance);
+    apiService.getUserPerformance(userId).then((performance) => {
+      console.log("User Performance:", performance);
+    });
   };
 
   useEffect(() => {
@@ -59,7 +56,7 @@ function Home() {
               <h1 className="title-container-home">
                 Bonjour
                 <span className="name-container-home">
-                  {userInfos.userInfos.firstName}
+                  {userInfos.data.userInfos.firstName}
                 </span>
               </h1>
               <p className="presentation-container-home">
