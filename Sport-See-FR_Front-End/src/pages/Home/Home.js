@@ -6,12 +6,16 @@ import emoji from "../../assets/emoji/emoji.png";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
 
+import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
+import ActivityBarChart from "../../components/ActivityBarChart/ActivityBarChart";
+
 import "./Home.scss";
 
 function Home() {
   const userId = 18;
 
   const [userInfos, setUserInfos] = useState(null);
+  const [activity, setActivity] = useState(null);
 
   const fetchUserInformations = () => {
     apiService.getUserInformations(userId).then((userInfos) => {
@@ -22,6 +26,7 @@ function Home() {
 
   const fetchUserActivityInformations = () => {
     apiService.getUserActivityInformations(userId).then((activity) => {
+      setActivity(activity);
       console.log("User Activity Informations:", activity);
     });
   };
@@ -67,6 +72,17 @@ function Home() {
                   alt="emoji applaudissement"
                 />
               </p>
+              <div className="section-container">
+                <div className="content-container-left">
+                  {activity && (
+                    <DailyActivityChart
+                      chart={<ActivityBarChart activity={activity} />}
+                    />
+                  )}
+                  <div className="calorie-measurement-card-container"></div>
+                </div>
+                <div className="content-container-right"></div>
+              </div>
             </>
           ) : (
             <div>Loading...</div>
