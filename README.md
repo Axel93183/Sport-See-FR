@@ -17,8 +17,8 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
 1. **Cloner le dépôt**
 
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-repo.git
-   cd votre-repo
+   git clone https://github.com/Axel93183/Sport-See-FR.git
+   cd Sport-See-FR
    ```
 
 2. **Construire et démarrer les conteneurs**
@@ -53,8 +53,8 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
 1. **Cloner le dépôt**
 
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-repo.git
-   cd votre-repo
+   git clone https://github.com/Axel93183/Sport-See-FR.git
+   cd Sport-See-FR
    ```
 
 2. **Installer les dépendances pour le front-end**
@@ -93,7 +93,7 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
 ## Structure du Projet
 
 ```
-/votre-repo
+/Sport-See-FR
     /Sport-See-FR_Front-End
         Dockerfile
         ...fichiers du front-end...

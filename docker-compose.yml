@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    volumes:
+      - ./Sport-See-FR_Front-End:/Sport-See-FR
 
   back-end:
     build:

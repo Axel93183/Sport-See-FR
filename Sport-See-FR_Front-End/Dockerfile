@@ -1,11 +1,7 @@
-FROM node:14
+FROM node:20
 
 WORKDIR /Sport-See-FR
 
-COPY . .
-
-RUN npm install
-
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD npm install && npm start;
