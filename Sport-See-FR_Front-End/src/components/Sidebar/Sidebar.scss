@@ -1,4 +1,3 @@
-// sidebar.scss
 @import "../../assets/sass/main.scss";
 
 .sidebar {
@@ -23,8 +22,7 @@
     text-align: start;
   }
 
-  // Media query for screens of 1024x780
-  @media (max-width: 1024px) {
+  @media (max-width: 1439.98px) {
     width: $sidebar-width-70;
 
     .icon-container > ul {

@@ -20,27 +20,21 @@ function Home() {
   const fetchUserInformations = () => {
     apiService.getUserInformations(userId).then((userInfos) => {
       setUserInfos(userInfos);
-      console.log("User Informations:", userInfos);
     });
   };
 
   const fetchUserActivityInformations = () => {
     apiService.getUserActivityInformations(userId).then((activity) => {
       setActivity(activity);
-      console.log("User Activity Informations:", activity);
     });
   };
 
   const fetchUserAverageSessions = () => {
-    apiService.getUserAverageSessions(userId).then((averageSessions) => {
-      console.log("User Average Sessions:", averageSessions);
-    });
+    apiService.getUserAverageSessions(userId).then((averageSessions) => {});
   };
 
   const fetchUserPerformance = () => {
-    apiService.getUserPerformance(userId).then((performance) => {
-      console.log("User Performance:", performance);
-    });
+    apiService.getUserPerformance(userId).then((performance) => {});
   };
 
   useEffect(() => {

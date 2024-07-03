@@ -56,7 +56,6 @@ function ActivityBarChart({ activity }) {
           <XAxis dataKey="day" tickLine={false} />
           <YAxis
             dataKey="kilogram"
-            domain={[minKilogram, maxKilogram + 1]}
             orientation="right"
             tickLine={false}
             axisLine={false}
@@ -64,7 +63,6 @@ function ActivityBarChart({ activity }) {
           <YAxis
             yAxisId="redBar"
             dataKey="calories"
-            domain={[0, 1000]}
             orientation="left"
             tickLine={false}
             axisLine={false}
@@ -80,8 +78,22 @@ function ActivityBarChart({ activity }) {
             verticalAlign="top"
             align="right"
             height={24}
-            dataKey="calories"
-            iconType="circle"
+            wrapperStyle={{ paddingBottom: 60 }}
+            formatter={(value) => {
+              return <span style={{ color: "#74798C" }}>{value}</span>;
+            }}
+            payload={[
+              {
+                value: "Poids (kg)",
+                type: "circle",
+                color: "#282D30",
+              },
+              {
+                value: "Calories brûlées (kCal)",
+                type: "circle",
+                color: "#E60000",
+              },
+            ]}
           />
           <Bar
             name="Poids(kg)"
