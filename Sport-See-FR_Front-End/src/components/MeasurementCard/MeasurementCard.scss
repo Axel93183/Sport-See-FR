@@ -1,0 +1,25 @@
+@import "../../assets/sass/main.scss";
+
+.measurement-card {
+  width: 100%;
+
+  &:nth-child(1) {
+    @include measurement-card-style($background-red);
+  }
+
+  &:nth-child(2) {
+    @include measurement-card-style($color-dark-grey);
+  }
+
+  &:nth-child(3) {
+    @include measurement-card-style($background-default);
+  }
+
+  @media (max-width: 1439.98px) {
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      height: 209px;
+    }
+  }
+}

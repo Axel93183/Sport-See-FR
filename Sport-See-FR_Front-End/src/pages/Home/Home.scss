@@ -41,6 +41,14 @@
         flex-direction: column;
         justify-content: space-between;
         height: 624px;
+        padding-right: 30px;
+        margin-bottom: 90px;
+
+        .measurement-card-container {
+          display: flex;
+          width: 100%;
+          gap: 30px;
+        }
       }
 
       .content-container-right {

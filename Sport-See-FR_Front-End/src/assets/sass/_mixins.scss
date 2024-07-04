@@ -59,7 +59,7 @@
   align-items: center;
 }
 
-@mixin card-style {
+@mixin macronutrient-card-style {
   width: 258px;
   height: 124px;
   background: $background-default;
@@ -69,7 +69,12 @@
   justify-content: flex-start;
 }
 
-@mixin text-style($font-weight, $font-size, $color, $line-height) {
+@mixin macronutrient-text-style(
+  $font-weight,
+  $font-size,
+  $color,
+  $line-height
+) {
   font-weight: $font-weight;
   font-size: $font-size;
   color: $color;
@@ -84,4 +89,12 @@
   cursor: pointer;
   margin: 1rem;
   background: $background-color;
+}
+
+@mixin measurement-card-style($background-color) {
+  background: $background-color;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  width: 258px;
+  height: 263px;
 }

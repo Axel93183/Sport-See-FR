@@ -1,14 +1,14 @@
 @import "../../assets/sass/main.scss";
 
 .macronutrient-card {
-  @include card-style;
+  @include macronutrient-card-style;
 
   .calorie-macronutrient-card {
-    @include text-style(500, 14px, $color-nutrient, 24px);
+    @include macronutrient-text-style(500, 14px, $color-grey, 24px);
   }
 
   .result-macronutrient-card {
-    @include text-style(700, 20px, $color-result, 24px);
+    @include macronutrient-text-style(700, 20px, $color-dark-grey, 24px);
   }
 
   .icon-container {

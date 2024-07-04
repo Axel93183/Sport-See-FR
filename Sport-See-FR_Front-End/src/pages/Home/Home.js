@@ -9,6 +9,7 @@ import DailyActivityChart from "../../components/DailyActivityChart/DailyActivit
 import MacronutrientCard from "../../components/MacronutrientCard/MacronutrientCard";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
+import MeasurementCard from "../../components/MeasurementCard/MeasurementCard";
 
 import emoji from "../../assets/emoji/emoji.png";
 import iconApple from "../../assets/images/MacronutrientIcons/apple.png";
@@ -80,7 +81,11 @@ function Home() {
                       chart={<ActivityBarChart activity={activity} />}
                     />
                   )}
-                  <div className="calorie-measurement-card-container"></div>
+                  <div className="measurement-card-container">
+                    <MeasurementCard />
+                    <MeasurementCard />
+                    <MeasurementCard />
+                  </div>
                 </div>
                 <div className="content-container-right" key={userInfos.id}>
                   <MacronutrientCard
