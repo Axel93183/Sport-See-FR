@@ -12,4 +12,14 @@ function convertToDate(date) {
   return jour.toString();
 }
 
-export { convertToDate };
+/**
+ * Calorie Conversion
+ * @param {number} calorie
+ * @returns {number}
+ */
+function converToKCal(calorie) {
+  const kiloCal = calorie / 1000;
+  return kiloCal.toFixed(3).replace('.', ',');
+}
+
+export { convertToDate, converToKCal };

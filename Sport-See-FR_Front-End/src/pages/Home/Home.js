@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 
 import apiService from "../../services/apiService";
 
-import emoji from "../../assets/emoji/emoji.png";
+import { converToKCal } from "../../utils/dataModelingTools";
+
+import ActivityBarChart from "../../components/ActivityBarChart/ActivityBarChart";
+import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
+import MacronutrientCard from "../../components/MacronutrientCard/MacronutrientCard";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
 
-import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
-import ActivityBarChart from "../../components/ActivityBarChart/ActivityBarChart";
+import emoji from "../../assets/emoji/emoji.png";
+import iconApple from "../../assets/images/MacronutrientIcons/apple.png";
+import iconCheeseburger from "../../assets/images/MacronutrientIcons/cheeseburger.png";
+import iconChicken from "../../assets/images/MacronutrientIcons/chicken.png";
+import iconEnergy from "../../assets/images/MacronutrientIcons/energy.png";
 
 import "./Home.scss";
 
@@ -75,7 +82,34 @@ function Home() {
                   )}
                   <div className="calorie-measurement-card-container"></div>
                 </div>
-                <div className="content-container-right"></div>
+                <div className="content-container-right" key={userInfos.id}>
+                  <MacronutrientCard
+                    data={
+                      converToKCal(userInfos.data.keyData.calorieCount) + "kCal"
+                    }
+                    image={iconEnergy}
+                    icon={"icon-energy"}
+                    name="Calories"
+                  />
+                  <MacronutrientCard
+                    data={userInfos.data.keyData.proteinCount + "g"}
+                    image={iconChicken}
+                    icon={"icon-chicken"}
+                    name="Proteines"
+                  />
+                  <MacronutrientCard
+                    data={userInfos.data.keyData.carbohydrateCount + "g"}
+                    image={iconApple}
+                    icon={"icon-apple"}
+                    name="Glucides"
+                  />
+                  <MacronutrientCard
+                    data={userInfos.data.keyData.lipidCount + "g"}
+                    image={iconCheeseburger}
+                    icon={"icon-cheesburger"}
+                    name="Lipides"
+                  />
+                </div>
               </div>
             </>
           ) : (

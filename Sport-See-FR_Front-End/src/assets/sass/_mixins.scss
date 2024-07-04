@@ -58,3 +58,30 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin card-style {
+  width: 258px;
+  height: 124px;
+  background: $background-default;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  @include center-flex;
+  justify-content: flex-start;
+}
+
+@mixin text-style($font-weight, $font-size, $color, $line-height) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  color: $color;
+  line-height: $line-height;
+}
+
+@mixin icon-style($background-color) {
+  width: 60px;
+  height: 60px;
+  border-radius: $border-radius;
+  padding: 1.3rem;
+  cursor: pointer;
+  margin: 1rem;
+  background: $background-color;
+}

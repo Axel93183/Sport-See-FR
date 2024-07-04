@@ -1,0 +1,31 @@
+@import "../../assets/sass/main.scss";
+
+.macronutrient-card {
+  @include card-style;
+
+  .calorie-macronutrient-card {
+    @include text-style(500, 14px, $color-nutrient, 24px);
+  }
+
+  .result-macronutrient-card {
+    @include text-style(700, 20px, $color-result, 24px);
+  }
+
+  .icon-container {
+    .icon-cheesburger {
+      @include icon-style(rgba(253, 81, 129, 0.1));
+    }
+
+    .icon-energy {
+      @include icon-style(rgba(253, 81, 129, 0.15));
+    }
+
+    .icon-chicken {
+      @include icon-style(rgba(74, 184, 255, 0.1));
+    }
+
+    .icon-apple {
+      @include icon-style(rgba(251, 246, 229, 0.9));
+    }
+  }
+}

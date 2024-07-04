@@ -42,6 +42,12 @@
         justify-content: space-between;
         height: 624px;
       }
+
+      .content-container-right {
+        display: flex;
+        flex-direction: column;
+        gap: 39px;
+      }
     }
   }
 
