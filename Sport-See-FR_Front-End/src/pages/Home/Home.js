@@ -7,9 +7,10 @@ import { converToKCal } from "../../utils/dataModelingTools";
 import ActivityBarChart from "../../components/ActivityBarChart/ActivityBarChart";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import MacronutrientCard from "../../components/MacronutrientCard/MacronutrientCard";
+import MeasurementCard from "../../components/MeasurementCard/MeasurementCard";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
-import MeasurementCard from "../../components/MeasurementCard/MeasurementCard";
+import TinyLineChart from "./../../components/TinyLineChart/TinyLineChart";
 
 import emoji from "../../assets/emoji/emoji.png";
 import iconApple from "../../assets/images/MacronutrientIcons/apple.png";
@@ -24,6 +25,7 @@ function Home() {
 
   const [userInfos, setUserInfos] = useState(null);
   const [activity, setActivity] = useState(null);
+  const [averageSessions, setAverageSessions] = useState(null);
 
   const fetchUserInformations = () => {
     apiService.getUserInformations(userId).then((userInfos) => {
@@ -38,7 +40,9 @@ function Home() {
   };
 
   const fetchUserAverageSessions = () => {
-    apiService.getUserAverageSessions(userId).then((averageSessions) => {});
+    apiService.getUserAverageSessions(userId).then((averageSessions) => {
+      setAverageSessions(averageSessions);
+    });
   };
 
   const fetchUserPerformance = () => {
@@ -82,7 +86,13 @@ function Home() {
                     />
                   )}
                   <div className="measurement-card-container">
-                    <MeasurementCard />
+                    {averageSessions && (
+                      <MeasurementCard
+                        chart={
+                          <TinyLineChart averageSessions={averageSessions} />
+                        }
+                      />
+                    )}
                     <MeasurementCard />
                     <MeasurementCard />
                   </div>

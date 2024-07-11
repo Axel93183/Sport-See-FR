@@ -4,11 +4,8 @@
  * @returns {string}
  */
 function convertToDate(date) {
-  // Create a Date object from the character string representing the date
   const maDate = new Date(date);
-  // Extract the day of the month corresponding to this date
   const jour = maDate.getDate();
-  // Display the day of the month
   return jour.toString();
 }
 
@@ -19,7 +16,26 @@ function convertToDate(date) {
  */
 function converToKCal(calorie) {
   const kiloCal = calorie / 1000;
-  return kiloCal.toFixed(3).replace('.', ',');
+  return kiloCal.toFixed(3).replace(".", ",");
 }
 
-export { convertToDate, converToKCal };
+/**
+ * Function to display only the first letter of the retrieved day
+ * @param {number} day
+ * @returns {string}
+ */
+function getDayOfWeek(day) {
+  const daysOfWeek = [
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
+    "Dimanche",
+  ];
+  const dayString = daysOfWeek[day - 1];
+  return dayString.charAt(0);
+}
+
+export { converToKCal, convertToDate, getDayOfWeek };

@@ -8,6 +8,11 @@
   font-weight: $font-weight-500;
 }
 
+@mixin font-15px-w500 {
+  font-size: $font-size-15;
+  font-weight: $font-weight-500;
+}
+
 @mixin font-18px-w400 {
   font-size: $font-size-18;
   font-weight: $font-weight-400;
