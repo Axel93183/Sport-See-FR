@@ -1,0 +1,27 @@
+@import "../../assets/sass/main.scss";
+
+p.titleRadialBarChart {
+  @include font-15px-w500;
+  padding-top: 30px;
+  padding-left: $padding-left;
+  position: absolute;
+  color: #20253a;
+  line-height: 24px;
+}
+
+.containerScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p.resultScore {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+span.descriptionScore {
+  color: #cacdd3;
+  font-size: 15px;
+  font-weight: 500;
+}

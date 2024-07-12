@@ -12,6 +12,7 @@ import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
 import SimpleRadarChart from "./../../components/SimpleRadarChart/SimpleRadarChart";
 import TinyLineChart from "./../../components/TinyLineChart/TinyLineChart";
+import ScoreRadialBarChart from "../../components/ScoreRadialBarChart/ScoreRadialBarChart";
 
 import emoji from "../../assets/emoji/emoji.png";
 import iconApple from "../../assets/images/MacronutrientIcons/apple.png";
@@ -20,7 +21,6 @@ import iconChicken from "../../assets/images/MacronutrientIcons/chicken.png";
 import iconEnergy from "../../assets/images/MacronutrientIcons/energy.png";
 
 import "./Home.scss";
-import ScoreRadialBarChart from "../../components/ScoreRadialBarChart/ScoreRadialBarChart";
 
 function Home() {
   const userId = 18;

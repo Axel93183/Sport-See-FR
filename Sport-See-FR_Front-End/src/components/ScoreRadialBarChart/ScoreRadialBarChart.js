@@ -1,5 +1,13 @@
-import { Legend, RadialBar, RadialBarChart } from "recharts";
+import {
+  Legend,
+  RadialBar,
+  RadialBarChart,
+  ResponsiveContainer,
+} from "recharts";
+
 import { converToPercent } from "../../utils/dataModelingTools";
+
+import "./ScoreRadialBarChart.scss";
 
 /**
  * ScoreRadialBarChart component recharts
@@ -31,11 +39,10 @@ const ScoreRadialBarChart = ({ userInfos }) => {
   };
 
   return (
-    <>
-      <h1 className="titleRadialBarChart">Score</h1>
+    <ResponsiveContainer width="100%" height="100%">
+      {" "}
+      <p className="titleRadialBarChart">Score</p>
       <RadialBarChart
-        width={250}
-        height={200}
         innerRadius={70}
         outerRadius={90}
         data={data}
@@ -56,7 +63,7 @@ const ScoreRadialBarChart = ({ userInfos }) => {
           cornerRadius="10"
         />
       </RadialBarChart>
-    </>
+    </ResponsiveContainer>
   );
 };
 
