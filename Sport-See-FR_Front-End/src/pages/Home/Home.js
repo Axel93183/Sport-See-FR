@@ -10,6 +10,7 @@ import MacronutrientCard from "../../components/MacronutrientCard/MacronutrientC
 import MeasurementCard from "../../components/MeasurementCard/MeasurementCard";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
+import SimpleRadarChart from "./../../components/SimpleRadarChart/SimpleRadarChart";
 import TinyLineChart from "./../../components/TinyLineChart/TinyLineChart";
 
 import emoji from "../../assets/emoji/emoji.png";
@@ -26,6 +27,7 @@ function Home() {
   const [userInfos, setUserInfos] = useState(null);
   const [activity, setActivity] = useState(null);
   const [averageSessions, setAverageSessions] = useState(null);
+  const [performance, setPerformance] = useState(null);
 
   const fetchUserInformations = () => {
     apiService.getUserInformations(userId).then((userInfos) => {
@@ -46,7 +48,9 @@ function Home() {
   };
 
   const fetchUserPerformance = () => {
-    apiService.getUserPerformance(userId).then((performance) => {});
+    apiService.getUserPerformance(userId).then((performance) => {
+      setPerformance(performance);
+    });
   };
 
   useEffect(() => {
@@ -93,7 +97,11 @@ function Home() {
                         }
                       />
                     )}
-                    <MeasurementCard />
+                    {performance && (
+                      <MeasurementCard
+                        chart={<SimpleRadarChart performance={performance} />}
+                      />
+                    )}
                     <MeasurementCard />
                   </div>
                 </div>

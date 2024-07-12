@@ -4,7 +4,7 @@ import mockPerformance from "../utils/mockPerformance";
 import mockUserInfos from "../utils/mockUserInfos";
 
 const BASE_URL = "http://localhost:3001";
-const isMock = false;
+const isMock = true;
 
 /**
  * Get user informations
