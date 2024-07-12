@@ -60,4 +60,21 @@ function translateEnglishToFrench(text) {
   return translatedWords.join(" ");
 }
 
-export { converToKCal, convertToDate, getDayOfWeek, translateEnglishToFrench };
+/**
+ * Percentage conversion
+ * @param {number} score
+ * @returns {number}
+ */
+function converToPercent(score) {
+  let nombre = score;
+  let pourcentage = nombre * 100; //Multiplication by 100 to convert to percentage
+  return pourcentage + "%";
+}
+
+export {
+  converToKCal,
+  convertToDate,
+  getDayOfWeek,
+  translateEnglishToFrench,
+  converToPercent,
+};
