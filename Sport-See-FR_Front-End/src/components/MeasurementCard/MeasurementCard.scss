@@ -1,7 +1,7 @@
 @import "../../assets/sass/main.scss";
 
 .measurement-card {
-  width: 100%;
+  width: 33%;
 
   &:nth-child(1) {
     @include measurement-card-style($background-red);

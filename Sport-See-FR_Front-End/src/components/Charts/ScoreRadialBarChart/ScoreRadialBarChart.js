@@ -5,7 +5,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { converToPercent } from "../../utils/dataModelingTools";
+import { converToPercent } from "../../../utils/dataModelingTools";
 
 import "./ScoreRadialBarChart.scss";
 

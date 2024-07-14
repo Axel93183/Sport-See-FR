@@ -87,8 +87,6 @@
 }
 
 @mixin icon-style($background-color) {
-  width: 60px;
-  height: 60px;
   border-radius: $border-radius;
   padding: 1.3rem;
   cursor: pointer;

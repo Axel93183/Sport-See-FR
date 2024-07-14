@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { convertToDate } from "../../utils/dataModelingTools";
+import { convertToDate } from "../../../utils/dataModelingTools";
 
 /**
  * ActivityBarChart component recharts
@@ -51,6 +51,7 @@ function ActivityBarChart({ activity }) {
           }}
           barCategoryGap={40}
           barGap={8}
+          barSize={10}
         >
           <CartesianGrid strokeDasharray="4 2" vertical={false} />
           <XAxis dataKey="day" tickLine={false} />

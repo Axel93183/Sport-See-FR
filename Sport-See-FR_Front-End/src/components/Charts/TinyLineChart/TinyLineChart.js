@@ -9,7 +9,7 @@ import {
   YAxis,
 } from "recharts";
 
-import { getDayOfWeek } from "../../utils/dataModelingTools.js";
+import { getDayOfWeek } from "../../../utils/dataModelingTools.js";
 
 import "./TinyLineChart.scss";
 

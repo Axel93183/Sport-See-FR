@@ -4,15 +4,15 @@ import apiService from "../../services/apiService";
 
 import { converToKCal } from "../../utils/dataModelingTools";
 
-import ActivityBarChart from "../../components/ActivityBarChart/ActivityBarChart";
+import ActivityBarChart from "../../components/Charts/ActivityBarChart/ActivityBarChart";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import MacronutrientCard from "../../components/MacronutrientCard/MacronutrientCard";
 import MeasurementCard from "../../components/MeasurementCard/MeasurementCard";
 import Navbar from "./../../components/Navbar/Navbar";
 import Sidebar from "./../../components/Sidebar/Sidebar";
-import SimpleRadarChart from "./../../components/SimpleRadarChart/SimpleRadarChart";
-import TinyLineChart from "./../../components/TinyLineChart/TinyLineChart";
-import ScoreRadialBarChart from "../../components/ScoreRadialBarChart/ScoreRadialBarChart";
+import SimpleRadarChart from "./../../components/Charts/SimpleRadarChart/SimpleRadarChart";
+import TinyLineChart from "./../../components/Charts/TinyLineChart/TinyLineChart";
+import ScoreRadialBarChart from "../../components/Charts/ScoreRadialBarChart/ScoreRadialBarChart";
 
 import emoji from "../../assets/emoji/emoji.png";
 import iconApple from "../../assets/images/MacronutrientIcons/apple.png";

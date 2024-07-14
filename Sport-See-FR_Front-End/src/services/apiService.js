@@ -4,7 +4,7 @@ import mockPerformance from "../utils/mockPerformance";
 import mockUserInfos from "../utils/mockUserInfos";
 
 const BASE_URL = "http://localhost:3001";
-const isMock = true;
+const isMock = false;
 
 /**
  * Get user informations
@@ -27,11 +27,11 @@ function getUserInformations(id) {
 function getUserActivityInformations(id) {
   if (isMock === true) {
     return Promise.resolve(
-      mockActivity.find((activity) => activity.data.userId === id)
+      mockActivity.find((activity) => activity.data.userId === id),
     );
   } else {
     return fetch(`${BASE_URL}/user/${id}/activity`).then((response) =>
-      response.json()
+      response.json(),
     );
   }
 }
@@ -44,11 +44,11 @@ function getUserActivityInformations(id) {
 function getUserAverageSessions(id) {
   if (isMock === true) {
     return Promise.resolve(
-      mockAverageSessions.find((session) => session.data.userId === id)
+      mockAverageSessions.find((session) => session.data.userId === id),
     );
   } else {
     return fetch(`${BASE_URL}/user/${id}/average-sessions`).then((response) =>
-      response.json()
+      response.json(),
     );
   }
 }
@@ -61,11 +61,11 @@ function getUserAverageSessions(id) {
 function getUserPerformance(id) {
   if (isMock === true) {
     return Promise.resolve(
-      mockPerformance.find((performance) => performance.data.userId === id)
+      mockPerformance.find((performance) => performance.data.userId === id),
     );
   } else {
     return fetch(`${BASE_URL}/user/${id}/performance`).then((response) =>
-      response.json()
+      response.json(),
     );
   }
 }

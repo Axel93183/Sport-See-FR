@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { translateEnglishToFrench } from "../../utils/dataModelingTools";
+import { translateEnglishToFrench } from "../../../utils/dataModelingTools";
 
 import "./SimpleRadarChart.scss";
 /**

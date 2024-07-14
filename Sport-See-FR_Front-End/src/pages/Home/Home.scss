@@ -4,13 +4,13 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: $sidebar-width;
 
   .daily-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding-top: $nav-height * 2;
+    padding-left: $sidebar-width;
 
     .title-container-home {
       @include font-48px-w500;
@@ -60,10 +60,9 @@
   }
 
   @media (max-width: 1439.98px) {
-    gap: $sidebar-width-70;
-
     .daily-container {
-      padding-top: $nav-height * 1.5;
+      padding-top: $nav-height-70 * 2;
+      padding-left: $sidebar-width-70;
     }
   }
 }
