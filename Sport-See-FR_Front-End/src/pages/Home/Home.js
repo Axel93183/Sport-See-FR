@@ -63,8 +63,8 @@ function Home() {
 
   return (
     <section>
-      <Navbar />
       <div className="container">
+        <Navbar />
         <Sidebar />
         <div className="daily-container">
           {userInfos ? (

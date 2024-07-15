@@ -5,9 +5,9 @@ import "./Navbar.scss";
 function Navbar() {
   return (
     <div className="navbar">
-      <img src={logo} alt="Logo de Sport See" />
       <nav className="nav">
         <ul>
+          <img src={logo} alt="Logo de Sport See" />
           <li>
             <NavLink to="/">Accueil</NavLink>
           </li>
