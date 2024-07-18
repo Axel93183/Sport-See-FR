@@ -3,14 +3,27 @@
 .container {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  gap: $gap-large;
+  height: 100%;
+
+  @media (max-width: 1320px) {
+    gap: $gap-large-1280;
+  }
+
+  @media (max-width: 1135px) {
+    gap: $gap-large-1024;
+  }
 
   .daily-container {
     display: flex;
     flex-direction: column;
+    height: 100vh;
     width: 100%;
-    padding-top: $nav-height * 2;
-    padding-left: $sidebar-width;
+    padding-top: $nav-height + 68px;
+
+    @media (max-width: 1320px) {
+      padding-top: $nav-height-1280 + 53.11px;
+    }
 
     .title-container-home {
       @include font-48px-w500;
@@ -18,6 +31,14 @@
       .name-container-home {
         color: $color-red;
         margin-left: 10px;
+
+        @media (max-width: 1320px) {
+          margin-left: 8.89px; // 10px * (1280 / 1440)
+        }
+
+        @media (max-width: 1135px) {
+          margin-left: 7.11px; // 10px * (1024 / 1440)
+        }
       }
     }
 
@@ -25,44 +46,67 @@
       @include font-18px-w400;
       margin-top: 25px;
 
+      @media (max-width: 1320px) {
+        margin-top: 19.53px; // 25px * (800 / 1024)
+      }
+
       .emoji {
         width: 18px;
         margin-left: 5px;
+
+        @media (max-width: 1320px) {
+          width: 16px; // 18px * (1280 / 1440)
+          margin-left: 4.45px; // 5px * (1280 / 1440)
+        }
+
+        @media (max-width: 1135px) {
+          width: 12.75px; // 18px * (1024 / 1440)
+          margin-left: 3.5px; // 5px * (1024 / 1440)
+        }
       }
     }
+
     .section-container {
       display: flex;
+      gap: 31px;
       width: 100%;
-      margin-top: 35px;
+      margin-top: 80px;
+
+      @media (max-width: 1320px) {
+        gap: 27.56px; // 31px * (1280 / 1440)
+        margin-top: 62.5px; // 80px * (800 / 1024)
+      }
+
+      @media (max-width: 1135px) {
+        gap: 22px; // 31px * (1024 / 1440)
+      }
 
       .content-container-left {
         width: 70%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        height: 624px;
-        padding-right: 30px;
-        margin-bottom: 90px;
+        gap: 51px;
+
+        @media (max-width: 1320px) {
+          gap: 39.84px; // 51px * (800 / 1024)
+        }
 
         .measurement-card-container {
           display: flex;
           width: 100%;
-          gap: 30px;
+          justify-content: space-between;
+
+          @media (max-width: 1320px) {
+            gap: 26.67px;
+          }
         }
       }
 
       .content-container-right {
         display: flex;
         flex-direction: column;
-        gap: 39px;
+        justify-content: space-between;
       }
-    }
-  }
-
-  @media (max-width: 1439.98px) {
-    .daily-container {
-      padding-top: $nav-height-70 * 2;
-      padding-left: $sidebar-width-70;
     }
   }
 }

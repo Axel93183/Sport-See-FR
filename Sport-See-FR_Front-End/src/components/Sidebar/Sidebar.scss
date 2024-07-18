@@ -9,7 +9,8 @@
   .icon-container > ul {
     @include center-flex;
     flex-direction: column;
-    gap: $gap-small;
+    gap: $sidebar-gap;
+    height: 100%;
   }
 
   .copyright {
@@ -22,19 +23,37 @@
     text-align: start;
   }
 
-  @media (max-width: 1439.98px) {
-    width: $sidebar-width-70;
+  @media (max-width: 1320px) {
+    width: $sidebar-width-1280;
+    height: unset;
 
     .icon-container > ul {
-      gap: $gap-small-70;
+      gap: $sidebar-gap-1280;
 
       img {
-        width: $icon-size-70;
+        width: $icon-size-1280;
+      }
+    }
+  }
+
+  @media (max-width: 1320px) {
+    width: $sidebar-width-1280;
+    height: unset;
+
+    .icon-container > ul {
+      gap: $sidebar-gap-1280;
+
+      img {
+        width: $icon-size-1280;
       }
     }
 
     .copyright {
-      bottom: $bottom-spacing-70;
+      bottom: $bottom-spacing-1280;
     }
+  }
+  @media (max-width: 1135px) {
+    width: $sidebar-width-1024;
+    height: unset;
   }
 }

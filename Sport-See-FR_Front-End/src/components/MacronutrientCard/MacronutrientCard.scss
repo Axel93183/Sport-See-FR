@@ -28,4 +28,13 @@
       @include icon-style(rgba(251, 246, 229, 0.9));
     }
   }
+
+  @media (max-width: 1320px) {
+    width: $macronutrient-card-width-1280;
+    height: $macronutrient-card-height-1280;
+  }
+
+  @media (max-width: 1135px) {
+    width: $macronutrient-card-width-1024;
+  }
 }

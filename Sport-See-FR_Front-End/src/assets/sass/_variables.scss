@@ -1,51 +1,96 @@
-$font-size-12: 0.75rem; // 12px
-$font-size-14: 0.875rem; // 14px
-$font-size-15: 0.9375rem; // 15px
-$font-size-18: 1.125rem; // 18px
-$font-size-24: 1.5rem; // 24px
-$font-size-36: 2.25rem; // 36px
-$font-size-48: 3rem; // 48px
+/* Font sizes */
+$font-size-12: 12px;
+$font-size-14: 14px;
+$font-size-15: 15px;
+$font-size-18: 18px;
+$font-size-24: 24px;
+$font-size-36: 36px;
+$font-size-48: 48px;
 
+/* Font weights */
 $font-weight-400: 400;
 $font-weight-500: 500;
 $font-weight-700: 700;
 
+/* Colors */
 $color-white: #ffffff;
 $color-black: #000000;
 $color-red: #ff0101;
 $color-grey: #74798c;
 $color-dark-grey: #282d30;
 
-$background-default: #759f58;
+/* Backgrounds */
+$background-default: #fbfbfb;
 $background-red: #ff0000;
 
+/* Other styles */
 $border-radius: 5px;
 $box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
 
-$gap-large: 12.5rem; // 200px
-$gap-small: 1.25rem; // 20px
-$nav-height: 5.6875rem; // 91px
-$sidebar-width: 7.3125rem; // 117px
-$padding-left: 1.875rem; // 30px
-$padding-right: 5.625rem; // 90px
-$img-width: 11.125rem; // 178px
-$img-height: 3.8125rem; // 61px
-$bottom-spacing: 3.75rem; // 60px
+/* Spacing and dimensions */
+$gap-large: 109px;
+$sidebar-gap: 20px;
+$nav-height: 91px;
+$sidebar-width: 117px;
+$padding-top: 24px;
+$padding-left: 30px;
+$padding-right: 90px;
+$img-width: 178px;
+$img-height: 61px;
+$bottom-spacing: 60px;
+$icon-size: 64px;
 
-// Adjusted variables for 70% of 1440x1024
-$nav-height-70: 3.98125rem; // 70% of 91px
-$sidebar-width-70: 5.11875rem; // 70% of 117px
-$padding-left-70: 1.3125rem; // 70% of 30px
-$padding-right-70: 3.9375rem; // 70% of 90px
-$img-width-70: 7.7875rem; // 70% of 178px
-$img-height-70: 2.66875rem; // 70% of 61px
-$gap-large-70: 8.75rem; // 70% of 200px
-$gap-small-70: 0.875rem; // 70% of 20px
-$bottom-spacing-70: 2.625rem; // 70% of 60px
-$icon-size-70: 2.8rem; // 70% of 64px
-$font-size-12-70: 0.525rem; // 70% of 12px
-$font-size-14-70: 0.6125rem; // 70% of 14px
-$font-size-18-70: 0.7875rem; // 70% of 18px
-$font-size-24-70: 1.05rem; // 70% of 24px
-$font-size-36-70: 1.575rem; // 70% of 36px
-$font-size-48-70: 2.1rem; // 70% of 48px
+/* Chart and card dimensions */
+$activity-chart-height: 320px;
+$measurement-card-width: 258px;
+$measurement-card-height: 263px;
+$macronutrient-card-width: 258px;
+$macronutrient-card-height: 124px;
+
+/* Screen size 1280 x 800 */
+
+/* Coeff. 0.889: width 1440px to 1280px,  Coeff. 0.781: height 1024px to 800px */
+
+/* Width and horizontal spacing adjustments (0.889) */
+$gap-large-1280: 96.8px; /* 109px * 0.889 */
+$sidebar-gap-1280: 17.78px; /* 20px * 0.889 */
+$sidebar-width-1280: 104.01px; /* 117px * 0.889 */
+$padding-left-1280: 26.67px; /* 30px * 0.889 */
+$padding-right-1280: 80.01px; /* 90px * 0.889 */
+$img-width-1280: 158.54px; /* 178px * 0.889 */
+$icon-size-1280: 56.9px; /* 64px * 0.889 */
+$measurement-card-width-1280: 229.36px; /* 258px * 0.889 */
+$macronutrient-card-width-1280: 229.36px; /* 258px * 0.889 */
+
+/* Height and vertical spacing adjustments (0.781) */
+$nav-height-1280: 71.17px; /* 91px * 0.781 */
+$padding-top-1280: 18.74px; /* 24px * 0.781 */
+$img-height-1280: 47.64px; /* 61px * 0.781 */
+$bottom-spacing-1280: 46.86px; /* 60px * 0.781 */
+$activity-chart-height-1280: 249.92px; /* 320px * 0.781 */
+$measurement-card-height-1280: 205.5px; /* 263px * 0.781 */
+$macronutrient-card-height-1280: 96.84px; /* 124px * 0.781 */
+
+/* Font size adjustments (0.781) */
+$font-size-12-1280: 9.37px; /* 12px * 0.781 */
+$font-size-14-1280: 10.93px; /* 14px * 0.781 */
+$font-size-15-1280: 11.72px; /* 15px * 0.781 */
+$font-size-18-1280: 14.06px; /* 18px * 0.781 */
+$font-size-24-1280: 18.74px; /* 24px * 0.781 */
+$font-size-36-1280: 28.11px; /* 36px * 0.781 */
+$font-size-48-1280: 37.49px; /* 48px * 0.781 */
+
+/* Screen size 1024 x 780 */
+
+/* Coeff. 0.711: width 1440px to 1024px */
+
+/* Width and horizontal spacing adjustments (0.711) */
+$gap-large-1024: 77.5px; // 109px * 0.711
+$sidebar-gap-1024: 14.22px; // 20px * 0.711
+$sidebar-width-1024: 83.19px; // 117px * 0.711
+$padding-left-1024: 21.33px; // 30px * 0.711
+$padding-right-1024: 63.99px; // 90px * 0.711
+$img-width-1024: 126.74px; // 178px * 0.711
+$icon-size-1024: 45.5px; // 64px * 0.711
+$measurement-card-width-1024: 183.57px; // 258px * 0.711
+$macronutrient-card-width-1024: 183.57px; // 258px * 0.711

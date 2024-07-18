@@ -15,11 +15,11 @@
     @include measurement-card-style($background-default);
   }
 
-  @media (max-width: 1439.98px) {
+  @media (max-width: 1320px) {
     &:nth-child(1),
     &:nth-child(2),
     &:nth-child(3) {
-      height: 209px;
+      height: $measurement-card-height-1280;
     }
   }
 }

@@ -1,61 +1,109 @@
 @mixin font-12px-w500 {
   font-size: $font-size-12;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-12-1280;
+  }
 }
 
 @mixin font-14px-w500 {
   font-size: $font-size-14;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-14-1280;
+  }
 }
 
 @mixin font-15px-w500 {
   font-size: $font-size-15;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-15-1280;
+  }
 }
 
 @mixin font-18px-w400 {
   font-size: $font-size-18;
   font-weight: $font-weight-400;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-18-1280;
+  }
 }
 
 @mixin font-18px-w500 {
   font-size: $font-size-18;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-18-1280;
+  }
 }
 
 @mixin font-24px-w500 {
   font-size: $font-size-24;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-24-1280;
+  }
 }
 
 @mixin font-36px-w500 {
   font-size: $font-size-36;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-36-1280;
+  }
 }
 
 @mixin font-14px-w700 {
   font-size: $font-size-14;
   font-weight: $font-weight-700;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-14-1280;
+  }
 }
 
 @mixin font-18px-w700 {
   font-size: $font-size-18;
   font-weight: $font-weight-700;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-18-1280;
+  }
 }
 
 @mixin font-24px-w700 {
   font-size: $font-size-24;
   font-weight: $font-weight-700;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-24-1280;
+  }
 }
 
 @mixin font-48px-w500 {
   font-size: $font-size-48;
   font-weight: $font-weight-500;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-48-1280;
+  }
 }
 
 @mixin font-48px-w700 {
   font-size: $font-size-48;
   font-weight: $font-weight-700;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size-48-1280;
+  }
 }
 
 @mixin center-flex {
@@ -65,13 +113,22 @@
 }
 
 @mixin macronutrient-card-style {
-  width: 258px;
-  height: 124px;
+  width: $macronutrient-card-width;
+  height: $macronutrient-card-height;
   background: $background-default;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
   @include center-flex;
   justify-content: flex-start;
+
+  @media (max-width: 1320px) {
+    width: $measurement-card-width-1280;
+    height: $macronutrient-card-height-1280;
+  }
+
+  @media (max-width: 1135px) {
+    width: $measurement-card-width-1024;
+  }
 }
 
 @mixin macronutrient-text-style(
@@ -84,6 +141,11 @@
   font-size: $font-size;
   color: $color;
   line-height: $line-height;
+
+  @media (max-width: 1320px) {
+    font-size: $font-size * 0.781; // (800 / 1024);
+    line-height: $line-height * 0.781; // (800 / 1024);
+  }
 }
 
 @mixin icon-style($background-color) {
@@ -98,6 +160,15 @@
   background: $background-color;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
-  width: 258px;
-  height: 263px;
+  width: $measurement-card-width;
+  height: $measurement-card-height;
+
+  @media (max-width: 1320px) {
+    width: $measurement-card-width-1280;
+    height: $measurement-card-height-1280;
+  }
+
+  @media (max-width: 1135px) {
+    width: $measurement-card-width-1024;
+  }
 }

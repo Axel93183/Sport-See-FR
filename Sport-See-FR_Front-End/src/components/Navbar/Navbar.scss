@@ -20,7 +20,7 @@
       justify-content: space-between;
       list-style-type: none;
       padding-left: $padding-left;
-      padding-right: $nav-height;
+      padding-right: $padding-right;
       align-items: center;
 
       img {
@@ -36,20 +36,30 @@
     }
   }
 
-  @media (max-width: 1439.98px) {
-    height: $nav-height-70;
+  @media (max-width: 1320px) {
+    height: $nav-height-1280;
 
     .nav > ul {
-      padding-left: $padding-left-70;
-      padding-right: $padding-right-70;
+      padding-left: $padding-left-1280;
+      padding-right: $padding-right-1280;
 
       img {
-        width: $img-width-70;
-        height: $img-height-70;
+        width: $img-width-1280;
+        height: $img-height-1280;
       }
 
       li a {
-        font-size: $font-size-24-70;
+        font-size: $font-size-24-1280;
+      }
+    }
+  }
+  @media (max-width: 1135px) {
+    .nav > ul {
+      padding-left: $padding-left-1024;
+      padding-right: $padding-right-1024;
+
+      img {
+        width: $img-width-1024;
       }
     }
   }
