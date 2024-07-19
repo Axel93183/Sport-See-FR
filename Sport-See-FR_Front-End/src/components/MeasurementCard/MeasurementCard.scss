@@ -9,6 +9,7 @@
 
   &:nth-child(2) {
     @include measurement-card-style($color-dark-grey);
+    @include font-12px-w500;
   }
 
   &:nth-child(3) {

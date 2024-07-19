@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import apiService from "../../services/apiService";
 
-import { converToKCal } from "../../utils/dataModelingTools";
+import { convertToKCal } from "../../utils/dataModelingTools";
 
 import ActivityBarChart from "../../components/Charts/ActivityBarChart/ActivityBarChart";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
@@ -111,7 +111,8 @@ function Home() {
                 <div className="content-container-right" key={userInfos.id}>
                   <MacronutrientCard
                     data={
-                      converToKCal(userInfos.data.keyData.calorieCount) + "kCal"
+                      convertToKCal(userInfos.data.keyData.calorieCount) +
+                      "kCal"
                     }
                     image={iconEnergy}
                     icon={"icon-energy"}

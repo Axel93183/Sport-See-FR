@@ -5,7 +5,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { converToPercent } from "../../../utils/dataModelingTools";
+import { convertToPercent } from "../../../utils/dataModelingTools";
 
 import "./ScoreRadialBarChart.scss";
 
@@ -29,7 +29,7 @@ const ScoreRadialBarChart = ({ userInfos }) => {
     return (
       <div className="containerScore">
         <p className="resultScore">
-          {converToPercent(userInfos.data.score ?? userInfos.data.todayScore)}
+          {convertToPercent(userInfos.data.score ?? userInfos.data.todayScore)}
         </p>
         <span className="descriptionScore">
           de votre <br /> objectif

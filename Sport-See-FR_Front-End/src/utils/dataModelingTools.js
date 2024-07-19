@@ -14,7 +14,7 @@ function convertToDate(date) {
  * @param {number} calorie
  * @returns {number}
  */
-function converToKCal(calorie) {
+function convertToKCal(calorie) {
   const kiloCal = calorie / 1000;
   return kiloCal.toFixed(3).replace(".", ",");
 }
@@ -53,11 +53,7 @@ function translateEnglishToFrench(text) {
     endurance: "Endurance",
   };
 
-  const translatedWords = text.split(" ").map((word) => {
-    const translatedWord = dictionary[word];
-    return translatedWord ? translatedWord : word;
-  });
-  return translatedWords.join(" ");
+  return dictionary[text];
 }
 
 /**
@@ -65,16 +61,16 @@ function translateEnglishToFrench(text) {
  * @param {number} score
  * @returns {number}
  */
-function converToPercent(score) {
+function convertToPercent(score) {
   let nombre = score;
   let pourcentage = nombre * 100; //Multiplication by 100 to convert to percentage
   return pourcentage + "%";
 }
 
 export {
-  converToKCal,
+  convertToKCal,
   convertToDate,
   getDayOfWeek,
   translateEnglishToFrench,
-  converToPercent,
+  convertToPercent,
 };
