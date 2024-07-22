@@ -7,21 +7,24 @@ p.titleRadialBarChart {
   position: absolute;
   color: #20253a;
   line-height: 24px;
+
+  @media (max-width: 1320px) {
+    padding-left: 18px;
+    padding-top: 15px;
+  }
 }
 
 .containerScore {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-p.resultScore {
-  font-size: 26px;
-  font-weight: bold;
-}
+  p.resultScore {
+    @include font-30px-w700;
+  }
 
-span.descriptionScore {
-  color: #cacdd3;
-  font-size: 15px;
-  font-weight: 500;
+  span.descriptionScore {
+    @include font-15px-w500;
+    color: #cacdd3;
+  }
 }
