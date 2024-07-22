@@ -5,6 +5,7 @@
   display: flex;
   gap: $gap-large;
   height: 100%;
+  position: relative;
 
   @media (max-width: 1320px) {
     gap: $gap-large-1280;
@@ -12,6 +13,25 @@
 
   @media (max-width: 1135px) {
     gap: $gap-large-1024;
+  }
+
+  .errors-userInfos {
+    @include font-48px-w500;
+    position: absolute;
+    top: $nav-height * 2;
+    left: $sidebar-width * 2;
+    right: $sidebar-width;
+    background-color: $background-default;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  .errors {
+    @include font-24px-w500;
+    background-color: $background-default;
+    border-radius: 5px;
+    padding: 15px;
+    width: 30%;
   }
 
   .daily-container {

@@ -25,18 +25,6 @@ function ActivityBarChart({ activity }) {
     };
   });
 
-  let minKilogram = items[0].kilogram;
-  let maxKilogram = items[0].kilogram;
-
-  for (let i = 1; i < items.length; i++) {
-    if (items[i].kilogram < minKilogram) {
-      minKilogram = items[i].kilogram;
-    }
-    if (items[i].kilogram > maxKilogram) {
-      maxKilogram = items[i].kilogram;
-    }
-  }
-
   return (
     <>
       <p className="activity-chart-title">Activité quotidienne</p>

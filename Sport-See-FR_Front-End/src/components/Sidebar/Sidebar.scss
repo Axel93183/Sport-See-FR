@@ -25,20 +25,6 @@
 
   @media (max-width: 1320px) {
     width: $sidebar-width-1280;
-    height: unset;
-
-    .icon-container > ul {
-      gap: $sidebar-gap-1280;
-
-      img {
-        width: $icon-size-1280;
-      }
-    }
-  }
-
-  @media (max-width: 1320px) {
-    width: $sidebar-width-1280;
-    height: unset;
 
     .icon-container > ul {
       gap: $sidebar-gap-1280;
@@ -52,8 +38,8 @@
       bottom: $bottom-spacing-1280;
     }
   }
+
   @media (max-width: 1135px) {
     width: $sidebar-width-1024;
-    height: unset;
   }
 }
