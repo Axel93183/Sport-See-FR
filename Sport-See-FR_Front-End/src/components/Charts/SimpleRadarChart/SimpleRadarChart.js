@@ -24,11 +24,55 @@ const SimpleRadarChart = ({ performance }) => {
     return { ...item, kind: translatedKind };
   });
 
+  const sortedData = [
+    translatedData.find((item) => item.kind === "Intensité"),
+    translatedData.find((item) => item.kind === "Vitesse"),
+    translatedData.find((item) => item.kind === "Force"),
+    translatedData.find((item) => item.kind === "Endurance"),
+    translatedData.find((item) => item.kind === "Énergie"),
+    translatedData.find((item) => item.kind === "Cardio"),
+  ];
+
+  const renderCustomizedTick = ({ x, y, payload }) => {
+    const newY = payload.value === "Endurance" ? y + 10 : y;
+
+    let textAnchor;
+    switch (payload.value) {
+      case "Intensité":
+      case "Endurance":
+        textAnchor = "middle";
+        break;
+      case "Vitesse":
+      case "Force":
+        textAnchor = "start";
+        break;
+      case "Cardio":
+      case "Énergie":
+        textAnchor = "end";
+        break;
+      default:
+        textAnchor = "middle";
+    }
+
+    return (
+      <text x={x} y={newY} textAnchor={textAnchor} fill="#fff">
+        <tspan x={x} dy="0em">
+          {payload.value}
+        </tspan>
+      </text>
+    );
+  };
+
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart outerRadius="70%" data={translatedData}>
+      <RadarChart outerRadius="70%" data={sortedData} style={{ padding: 5 }}>
         <PolarGrid fillOpacity={0.7} strokeWidth={2} radialLines={false} />
-        <PolarAngleAxis dataKey="kind" stroke="white" tickLine={false} />
+        <PolarAngleAxis
+          dataKey="kind"
+          tick={renderCustomizedTick}
+          stroke="white"
+          tickLine={false}
+        />
         <Radar
           dataKey="value"
           stroke="#E60000"
