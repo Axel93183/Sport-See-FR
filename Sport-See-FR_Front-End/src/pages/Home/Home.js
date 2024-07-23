@@ -23,6 +23,15 @@ import iconEnergy from "../../assets/images/MacronutrientIcons/energy.png";
 
 import "./Home.scss";
 
+/**
+ * Home component fetches and displays user information, activity, average sessions, and performance data.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Home />
+ * )
+ */
 function Home() {
   const userId = 18;
 
@@ -38,6 +47,9 @@ function Home() {
     performance: null,
   });
 
+  /**
+   * Fetches user information from the API.
+   */
   const fetchUserInformations = () => {
     setTimeout(() => {
       apiService
@@ -53,57 +65,75 @@ function Home() {
               "Impossible de récupérer les informations de l'utilisateur. Veuillez réessayer plus tard.",
           }));
         });
+    }, 1000);
+  };
+
+  /**
+   * Fetches user activity information from the API.
+   */
+  const fetchUserActivityInformations = () => {
+    setTimeout(() => {
+      apiService
+        .getUserActivityInformations(userId)
+        .then((data) => {
+          setActivity(data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch user activity information:", error);
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            activity:
+              "Impossible de récupérer les informations sur l'activité de l'utilisateur. Veuillez réessayer plus tard.",
+          }));
+        });
     }, 2000);
   };
 
-  const fetchUserActivityInformations = () => {
-    apiService
-      .getUserActivityInformations(userId)
-      .then((data) => {
-        setActivity(data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch user activity information:", error);
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          activity:
-            "Impossible de récupérer les informations sur l'activité de l'utilisateur. Veuillez réessayer plus tard.",
-        }));
-      });
-  };
-
+  /**
+   * Fetches user average sessions from the API.
+   */
   const fetchUserAverageSessions = () => {
-    apiService
-      .getUserAverageSessions(userId)
-      .then((data) => {
-        setAverageSessions(data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch user average sessions:", error);
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          averageSessions:
-            "Impossible de récupérer les sessions moyennes de l'utilisateur. Veuillez réessayer plus tard.",
-        }));
-      });
+    setTimeout(() => {
+      apiService
+        .getUserAverageSessions(userId)
+        .then((data) => {
+          setAverageSessions(data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch user average sessions:", error);
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            averageSessions:
+              "Impossible de récupérer les sessions moyennes de l'utilisateur. Veuillez réessayer plus tard.",
+          }));
+        });
+    }, 2000);
   };
 
+  /**
+   * Fetches user performance data from the API.
+   */
   const fetchUserPerformance = () => {
-    apiService
-      .getUserPerformance(userId)
-      .then((data) => {
-        setPerformance(data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch user performance:", error);
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          performance:
-            "Impossible de récupérer les performances de l'utilisateur. Veuillez réessayer plus tard.",
-        }));
-      });
+    setTimeout(() => {
+      apiService
+        .getUserPerformance(userId)
+        .then((data) => {
+          setPerformance(data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch user performance:", error);
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            performance:
+              "Impossible de récupérer les performances de l'utilisateur. Veuillez réessayer plus tard.",
+          }));
+        });
+    }, 2000);
   };
 
+  /**
+   * useEffect hook to fetch all user data on component mount.
+   */
   useEffect(() => {
     fetchUserInformations();
     fetchUserActivityInformations();
@@ -142,7 +172,9 @@ function Home() {
                 <div className="content-container-left">
                   {/* Section Activity */}
                   {!activity && !errors.activity ? (
-                    <div>Loading activity...</div>
+                    <div className="charts-loader-wrapper">
+                      <Loader small image={iconEnergy} icon={"icon-energy"} />
+                    </div>
                   ) : errors.activity ? (
                     <div className="errors">{errors.activity}</div>
                   ) : (
@@ -153,7 +185,9 @@ function Home() {
                   <div className="measurement-card-container">
                     {/* Average Sessions */}
                     {!averageSessions && !errors.averageSessions ? (
-                      <div>Loading average sessions...</div>
+                      <div className="charts-loader-wrapper">
+                        <Loader small image={iconEnergy} icon={"icon-energy"} />
+                      </div>
                     ) : errors.averageSessions ? (
                       <div className="errors">{errors.averageSessions}</div>
                     ) : (
@@ -166,7 +200,9 @@ function Home() {
 
                     {/* Performance */}
                     {!performance && !errors.performance ? (
-                      <div>Loading performance...</div>
+                      <div className="charts-loader-wrapper">
+                        <Loader small image={iconEnergy} icon={"icon-energy"} />
+                      </div>
                     ) : errors.performance ? (
                       <div className="errors">{errors.performance}</div>
                     ) : (
