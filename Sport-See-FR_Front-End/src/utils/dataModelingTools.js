@@ -1,7 +1,7 @@
 /**
  * Function to retrieve only the day of a date
- * @param {string} date
- * @returns {string}
+ * @param {string} date - The date string to convert.
+ * @returns {string} - The day of the month as a string.
  */
 function convertToDate(date) {
   const maDate = new Date(date);
@@ -11,8 +11,8 @@ function convertToDate(date) {
 
 /**
  * Calorie Conversion
- * @param {number} calorie
- * @returns {number}
+ * @param {number} calorie - The number of calories to convert.
+ * @returns {number} - The number of kilocalories.
  */
 function convertToKCal(calorie) {
   const kiloCal = calorie / 1000;
@@ -21,8 +21,8 @@ function convertToKCal(calorie) {
 
 /**
  * Function to display only the first letter of the retrieved day
- * @param {number} day
- * @returns {string}
+ * @param {number} day - The day of the week (1 for Monday, 7 for Sunday).
+ * @returns {string} - The first letter of the day of the week in French.
  */
 function getDayOfWeek(day) {
   const daysOfWeek = [
@@ -40,8 +40,8 @@ function getDayOfWeek(day) {
 
 /**
  * Function translate a specific object from English to French
- * @param {string} text
- * @returns {string}
+ * @param {string} text - The text to translate.
+ * @returns {string} - The translated text.
  */
 function translateEnglishToFrench(text) {
   const dictionary = {
@@ -58,19 +58,19 @@ function translateEnglishToFrench(text) {
 
 /**
  * Percentage conversion
- * @param {number} score
- * @returns {number}
+ * @param {number} score - The score to convert.
+ * @returns {number} - The score as a percentage string.
  */
 function convertToPercent(score) {
   let nombre = score;
-  let pourcentage = nombre * 100; //Multiplication by 100 to convert to percentage
+  let pourcentage = nombre * 100; // Multiplication by 100 to convert to percentage
   return pourcentage + "%";
 }
 
 export {
-  convertToKCal,
   convertToDate,
+  convertToKCal,
+  convertToPercent,
   getDayOfWeek,
   translateEnglishToFrench,
-  convertToPercent,
 };

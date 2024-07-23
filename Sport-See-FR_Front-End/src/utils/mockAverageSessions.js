@@ -1,3 +1,26 @@
+/**
+ * @typedef {Object} Session
+ * @property {number} day - The day of the week, represented as a number (1 for Monday, 7 for Sunday).
+ * @property {number} sessionLength - The length of the session in minutes for the given day.
+ */
+
+/**
+ * @typedef {Object} UserAverageSessions
+ * @property {Object} data - Contains the user data.
+ * @property {number} data.userId - The unique identifier of the user.
+ * @property {Session[]} data.sessions - An array of average session data for the user.
+ */
+
+/**
+ * Mock data representing average session lengths for users.
+ *
+ * This array contains sample average session data for multiple users, including:
+ * - User ID
+ * - Day of the week
+ * - Length of the session in minutes
+ *
+ * @type {UserAverageSessions[]}
+ */
 const mockAverageSessions = [
   {
     data: {

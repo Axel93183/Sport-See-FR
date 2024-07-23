@@ -1,3 +1,28 @@
+/**
+ * @typedef {Object} Session
+ * @property {string} day - The date of the session in the format "YYYY-MM-DD".
+ * @property {number} kilogram - The weight of the user in kilograms on the given day.
+ * @property {number} calories - The number of calories burned on the given day.
+ */
+
+/**
+ * @typedef {Object} UserActivity
+ * @property {Object} data - Contains the user data.
+ * @property {number} data.userId - The unique identifier of the user.
+ * @property {Session[]} data.sessions - An array of session data for the user.
+ */
+
+/**
+ * Mock data representing user activity.
+ *
+ * This array contains sample activity data for multiple users, including:
+ * - User ID
+ * - Session dates
+ * - Weight in kilograms
+ * - Calories burned
+ *
+ * @type {UserActivity[]}
+ */
 const mockActivity = [
   {
     data: {

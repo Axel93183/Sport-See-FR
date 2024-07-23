@@ -1,3 +1,37 @@
+/**
+ * @typedef {Object} PerformanceData
+ * @property {number} value - The performance value for the given type of activity.
+ * @property {number} kind - The type of activity, represented by a numeric identifier.
+ */
+
+/**
+ * @typedef {Object} PerformanceKind
+ * @property {number} 1 - Cardio.
+ * @property {number} 2 - Energy.
+ * @property {number} 3 - Endurance.
+ * @property {number} 4 - Strength.
+ * @property {number} 5 - Speed.
+ * @property {number} 6 - Intensity.
+ */
+
+/**
+ * @typedef {Object} UserPerformance
+ * @property {Object} data - Contains the user performance data.
+ * @property {number} data.userId - The unique identifier of the user.
+ * @property {PerformanceKind} data.kind - A mapping of performance types to their numeric identifiers.
+ * @property {PerformanceData[]} data.data - An array of performance metrics for the user.
+ */
+
+/**
+ * Mock data representing user performance metrics.
+ *
+ * This array contains sample performance data for multiple users, including:
+ * - User ID
+ * - Performance metrics for various activity types
+ * - A mapping of activity types to their identifiers
+ *
+ * @type {UserPerformance[]}
+ */
 const mockPerformance = [
   {
     data: {

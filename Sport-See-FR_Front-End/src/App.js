@@ -4,6 +4,15 @@ import Error404 from "./pages/Error404/Error404";
 
 import "./App.scss";
 
+/**
+ * App component sets up the main routing for the application.
+ *
+ * @component
+ * @example
+ * return (
+ *   <App />
+ * )
+ */
 function App() {
   return (
     <div>
