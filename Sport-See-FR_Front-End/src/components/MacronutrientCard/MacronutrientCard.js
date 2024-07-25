@@ -7,10 +7,14 @@ import "./MacronutrientCard.scss";
  * This component renders an icon and an image via the IconCard component,
  * along with the user's data (such as protein, calories, lipids, carbohydrates).
  *
- * @returns {React.JSX.Element} A component that displays an icon, an image, and user data.
+ * @param {object} props - Component properties
+ * @param {string} props.image - The source URL of the image
+ * @param {string} props.icon - The class name for the icon
+ * @param {string} props.data - The data to display (e.g., protein, calories)
+ * @param {string} props.name - The name of the macronutrient
+ * @returns {React.JSX.Element} A component that displays an icon, an image, and user data
  */
-
-function MacronutrientCard({ image, icon, data, name }) {
+const MacronutrientCard = ({ image, icon, data, name }) => {
   return (
     <div className="macronutrient-card">
       <MacronutrientIcon image={image} icon={icon} />
@@ -20,6 +24,6 @@ function MacronutrientCard({ image, icon, data, name }) {
       </div>
     </div>
   );
-}
+};
 
 export default MacronutrientCard;

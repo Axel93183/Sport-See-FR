@@ -1,8 +1,18 @@
 import MacronutrientIcon from "./../MacronutrientIcon/MacronutrientIcon";
-
 import "./Loader.scss";
 
-function Loader({ image, icon, small }) {
+/**
+ * Loader component
+ *
+ * This component renders a loader with an icon and a loading message.
+ *
+ * @param {object} props - Component properties
+ * @param {string} props.image - The source URL of the image
+ * @param {string} props.icon - The class name for the icon
+ * @param {boolean} [props.small] - Whether the loader is small
+ * @returns {React.JSX.Element} A component that displays a loading icon and message
+ */
+const Loader = ({ image, icon, small }) => {
   return (
     <div
       className={`loader-container ${small ? "loader-container-small" : ""}`}
@@ -14,6 +24,6 @@ function Loader({ image, icon, small }) {
       <div className="loader"></div>
     </div>
   );
-}
+};
 
 export default Loader;
