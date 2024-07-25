@@ -5,10 +5,9 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from "recharts";
-
 import { translateEnglishToFrench } from "../../../utils/dataModelingTools";
-
 import "./SimpleRadarChart.scss";
+
 /**
  * SimpleRadarChart component recharts
  * @example userID: 18 / data : 1 :{value: 240, kind: 'Energie'} / kind : 4 : "strength"

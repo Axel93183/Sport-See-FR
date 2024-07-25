@@ -8,9 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-
 import { getDayOfWeek } from "../../../utils/dataModelingTools.js";
-
 import "./TinyLineChart.scss";
 
 /**
@@ -31,8 +29,7 @@ import "./TinyLineChart.scss";
  *
  * @returns {React.Component} A component that renders a line chart.
  */
-
-function TinyLineChart({ averageSessions }) {
+const TinyLineChart = ({ averageSessions }) => {
   const items = averageSessions.data.sessions.map((item) => {
     return { day: getDayOfWeek(item.day), sessionLength: item.sessionLength };
   });
@@ -62,11 +59,11 @@ function TinyLineChart({ averageSessions }) {
     const { x } = points[0];
     const borderRadius = 5;
 
-    // Largeur et hauteur du rectangle
+    // Rectangle width and height
     const width = viewBox.width - x;
     const height = viewBox.height;
 
-    // Créez un chemin pour le rectangle
+    // Create a path for the rectangle
     const path = `
       M${x},0
       L${x + width - borderRadius},0
@@ -127,6 +124,6 @@ function TinyLineChart({ averageSessions }) {
       </LineChart>
     </ResponsiveContainer>
   );
-}
+};
 
 export default TinyLineChart;

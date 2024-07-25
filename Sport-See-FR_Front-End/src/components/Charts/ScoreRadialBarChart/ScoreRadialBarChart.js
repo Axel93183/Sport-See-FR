@@ -4,9 +4,7 @@ import {
   RadialBarChart,
   ResponsiveContainer,
 } from "recharts";
-
 import { convertToPercent } from "../../../utils/dataModelingTools";
-
 import "./ScoreRadialBarChart.scss";
 
 /**
@@ -40,7 +38,6 @@ const ScoreRadialBarChart = ({ userInfos }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      {" "}
       <p className="titleRadialBarChart">Score</p>
       <RadialBarChart
         innerRadius={70}

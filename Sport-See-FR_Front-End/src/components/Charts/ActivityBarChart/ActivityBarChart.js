@@ -16,7 +16,7 @@ import { convertToDate } from "../../../utils/dataModelingTools";
  *
  * @description This component displays a bar chart illustrating the daily evolution of weight and calories burned. The chart includes a tooltip that shows synthetic results on hover, and a legend indicating the different data series (Calories, Kilogram). The x-axis represents days, while the y-axis displays weight and calories. The chart is responsive and adapts to different screen sizes.
  */
-function ActivityBarChart({ activity }) {
+const ActivityBarChart = ({ activity }) => {
   const items = activity.data.sessions.map((item) => {
     return {
       day: convertToDate(item.day),
@@ -101,6 +101,6 @@ function ActivityBarChart({ activity }) {
       </ResponsiveContainer>
     </>
   );
-}
+};
 
 export default ActivityBarChart;
