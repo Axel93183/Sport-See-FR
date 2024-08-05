@@ -1,4 +1,6 @@
-/** ACTIVITY BAR CHARTS **/
+import { convertToPercent } from "./dataModelingTools";
+
+/** ACTIVITY BAR CHART **/
 
 /**
  * Configuration object for the ActivityBarChart component.
@@ -42,4 +44,48 @@ export const activityBarChartConfig = {
       color: "#E60000",
     },
   ],
+};
+
+/** SCORE RADIAL BAR CHART */
+
+/**
+ * Generates configuration data for the ScoreRadialBarChart.
+ * Converts user score information into a format suitable for the RadialBarChart.
+ * @param {Object} userInfos - User information object.
+ * @param {Object} userInfos.data - Data object containing the user's score or today's score.
+ * @param {number} [userInfos.data.score] - User's overall score (optional).
+ * @param {number} [userInfos.data.todayScore] - User's score for today (optional).
+ * @returns {Object[]} Array of configuration objects for the RadialBarChart.
+ */
+
+export const scoreRadialBarChartConfig = (userInfos) => [
+  {
+    id: 1,
+    todayScore: (userInfos.data.score ?? userInfos.data.todayScore) * 100,
+    fill: "#E60000",
+  },
+  { id: 2, todayScore: 100, opacity: 0 },
+];
+
+/**
+ * Renders a custom legend for the ScoreRadialBarChart.
+ * Displays the user's score as a percentage of their goal.
+ * @param {Object} userInfos - User information object.
+ * @param {Object} userInfos.data - Data object containing the user's score or today's score.
+ * @param {number} [userInfos.data.score] - User's overall score (optional).
+ * @param {number} [userInfos.data.todayScore] - User's score for today (optional).
+ * @returns {JSX.Element} JSX element representing the custom legend.
+ */
+
+export const scoreRadialBarChartRenderLegend = (userInfos) => {
+  return (
+    <div className="containerScore">
+      <p className="resultScore">
+        {convertToPercent(userInfos.data.score ?? userInfos.data.todayScore)}
+      </p>
+      <span className="descriptionScore">
+        de votre <br /> objectif
+      </span>
+    </div>
+  );
 };

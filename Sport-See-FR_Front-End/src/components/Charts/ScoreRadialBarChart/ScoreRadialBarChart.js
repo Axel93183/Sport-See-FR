@@ -4,37 +4,22 @@ import {
   RadialBarChart,
   ResponsiveContainer,
 } from "recharts";
-import { convertToPercent } from "../../../utils/dataModelingTools";
+
+import { scoreRadialBarChartRenderLegend } from "../../../utils/chartsConfig";
+
 import "./ScoreRadialBarChart.scss";
 
 /**
- * ScoreRadialBarChart component recharts
- * @param {object} userInfos - Object containing user data including today's score.
- * @example data: id: 18, keyData: {calorieCount: 2500,...}, score: 0.3, userInfos: {firstName: 'Cecilia',...}
- * @returns {JSX.Element} A component that displays a circle (RadialBarChart) showing the percentage goal achievement with a title.
+ * ScoreRadialBarChart component.
+ * Renders a radial bar chart to display a score with a custom legend.
+ * @param {Object} props - Component properties.
+ * @param {Object[]} props.formattedData - Array of formatted data objects for the RadialBarChart.
+ * @param {Object} props.data - Data object used for rendering the custom legend.
+ * @returns {JSX.Element} ScoreRadialBarChart component.
  */
-const ScoreRadialBarChart = ({ userInfos }) => {
-  const data = [
-    {
-      id: 1,
-      todayScore: (userInfos.data.score ?? userInfos.data.todayScore) * 100,
-      fill: "#E60000",
-    },
-    { id: 2, todayScore: 100, opacity: 0 },
-  ];
 
-  const renderLegend = () => {
-    return (
-      <div className="containerScore">
-        <p className="resultScore">
-          {convertToPercent(userInfos.data.score ?? userInfos.data.todayScore)}
-        </p>
-        <span className="descriptionScore">
-          de votre <br /> objectif
-        </span>
-      </div>
-    );
-  };
+const ScoreRadialBarChart = ({ formattedData, data }) => {
+  const renderLegend = () => scoreRadialBarChartRenderLegend(data);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -42,7 +27,7 @@ const ScoreRadialBarChart = ({ userInfos }) => {
       <RadialBarChart
         innerRadius={70}
         outerRadius={90}
-        data={data}
+        data={formattedData}
         startAngle={90}
         endAngle={450}
       >

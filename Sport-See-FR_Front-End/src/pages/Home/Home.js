@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { activityBarChartConfig } from "../../utils/chartsConfig";
+import {
+  activityBarChartConfig,
+  scoreRadialBarChartConfig,
+} from "../../utils/chartsConfig";
 import {
   convertToKCal,
   transformActivityData,
@@ -52,14 +55,18 @@ function Home() {
   });
 
   /**
-   * Fetches user information from the API.
+   * Fetches user information, formats the data for the score radial bar chart, and updates the state.
+   * Handles errors by logging them and updating the error state.
+   * @function fetchUserInformations
+   * @returns {void}
    */
   const fetchUserInformations = () => {
     setTimeout(() => {
       apiService
         .getUserInformations(userId)
         .then((data) => {
-          setUserInfos(data);
+          const formattedData = scoreRadialBarChartConfig(data);
+          setUserInfos({ ...data, formattedData });
         })
         .catch((error) => {
           console.error("Failed to fetch user information:", error);
@@ -73,7 +80,10 @@ function Home() {
   };
 
   /**
-   * Fetches user activity information from the API.
+   * Fetches user activity information and updates the state with transformed data.
+   * Handles errors by logging them and updating the error state.
+   * @function fetchUserActivityInformations
+   * @returns {void}
    */
   const fetchUserActivityInformations = () => {
     apiService
@@ -224,7 +234,12 @@ function Home() {
 
                     {/* Score Radial Bar Chart */}
                     <MeasurementCard
-                      chart={<ScoreRadialBarChart userInfos={userInfos} />}
+                      chart={
+                        <ScoreRadialBarChart
+                          formattedData={userInfos.formattedData}
+                          data={userInfos}
+                        />
+                      }
                     />
                   </div>
                 </div>
