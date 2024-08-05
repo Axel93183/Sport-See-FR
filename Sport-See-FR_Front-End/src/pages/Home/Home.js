@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 
-import apiService from "../../services/apiService";
+import { activityBarChartConfig } from "../../utils/chartsConfig";
+import {
+  convertToKCal,
+  transformActivityData,
+} from "../../utils/dataModelingTools";
 
-import { convertToKCal } from "../../utils/dataModelingTools";
+import apiService from "../../services/apiService";
 
 import ActivityBarChart from "../../components/Charts/ActivityBarChart/ActivityBarChart";
 import ScoreRadialBarChart from "../../components/Charts/ScoreRadialBarChart/ScoreRadialBarChart";
@@ -72,21 +76,23 @@ function Home() {
    * Fetches user activity information from the API.
    */
   const fetchUserActivityInformations = () => {
-    setTimeout(() => {
-      apiService
-        .getUserActivityInformations(userId)
-        .then((data) => {
-          setActivity(data);
-        })
-        .catch((error) => {
-          console.error("Failed to fetch user activity information:", error);
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            activity:
-              "Impossible de récupérer les informations sur l'activité de l'utilisateur. Veuillez réessayer plus tard.",
-          }));
+    apiService
+      .getUserActivityInformations(userId)
+      .then((data) => {
+        const transformedData = transformActivityData(data.data.sessions);
+        setActivity({
+          ...data,
+          data: { ...data.data, sessions: transformedData },
         });
-    }, 2000);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch user activity information:", error);
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          activity:
+            "Impossible de récupérer les informations sur l'activité de l'utilisateur. Veuillez réessayer plus tard.",
+        }));
+      });
   };
 
   /**
@@ -179,7 +185,12 @@ function Home() {
                     <div className="errors">{errors.activity}</div>
                   ) : (
                     <DailyActivityChart
-                      chart={<ActivityBarChart activity={activity} />}
+                      chart={
+                        <ActivityBarChart
+                          data={activity.data.sessions}
+                          config={activityBarChartConfig}
+                        />
+                      }
                     />
                   )}
                   <div className="measurement-card-container">

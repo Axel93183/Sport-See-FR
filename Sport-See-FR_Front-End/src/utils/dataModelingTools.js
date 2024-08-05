@@ -67,10 +67,31 @@ function convertToPercent(score) {
   return pourcentage + "%";
 }
 
+/**
+ * Transforms an array of session data into a standardized format.
+ * @param {Object[]} sessions - Array of session data objects.
+ * @param {string} sessions[].day - Date of the session in string format.
+ * @param {number} sessions[].kilogram - Weight recorded during the session.
+ * @param {number} sessions[].calories - Calories burned during the session.
+ * @returns {Object[]} Array of transformed session data objects.
+ * @returns {Object} Transformed data object.
+ * @returns {Date} transformedDataObject.day - Date of the session as a Date object.
+ * @returns {number} transformedDataObject.kilogram - Weight recorded during the session.
+ * @returns {number} transformedDataObject.calories - Calories burned during the session.
+ */
+function transformActivityData(sessions) {
+  return sessions.map((item) => ({
+    day: convertToDate(item.day),
+    kilogram: item.kilogram,
+    calories: item.calories,
+  }));
+}
+
 export {
   convertToDate,
   convertToKCal,
   convertToPercent,
   getDayOfWeek,
+  transformActivityData,
   translateEnglishToFrench,
 };
