@@ -1,4 +1,7 @@
-import { convertToPercent } from "./dataModelingTools";
+import {
+  convertToPercent,
+  translateEnglishToFrench,
+} from "./dataModelingTools";
 
 /** ACTIVITY BAR CHART **/
 
@@ -87,5 +90,80 @@ export const scoreRadialBarChartRenderLegend = (userInfos) => {
         de votre <br /> objectif
       </span>
     </div>
+  );
+};
+
+/** PERFORMANCE RADAR CHART */
+
+/**
+ * Configures data for the performance radar chart by translating and sorting performance metrics.
+ * Translates performance kinds from English to French and returns the data sorted by predefined categories.
+ * @param {Object} performance - Raw performance data.
+ * @param {Array} performance.data - Array of performance metrics, each with a `kind` and `value`.
+ * @param {Object} performance.kind - Mapping of `kind` keys to their descriptions in English.
+ * @returns {Array} Sorted and translated radar chart data.
+ */
+
+export const performanceRadarChartConfig = (performance) => {
+  const { data: performanceItems, kind: kindMap } = performance.data;
+
+  const translatedData = performanceItems.map((item) => {
+    const kindKey = item.kind;
+    const kindString = kindMap[kindKey];
+    const translatedKind = translateEnglishToFrench(kindString);
+    return { ...item, kind: translatedKind };
+  });
+
+  return [
+    translatedData.find((item) => item.kind === "Intensité"),
+    translatedData.find((item) => item.kind === "Vitesse"),
+    translatedData.find((item) => item.kind === "Force"),
+    translatedData.find((item) => item.kind === "Endurance"),
+    translatedData.find((item) => item.kind === "Énergie"),
+    translatedData.find((item) => item.kind === "Cardio"),
+  ];
+};
+
+/**
+ * Renders a customized tick for the radar chart's polar angle axis.
+ * Adjusts the position and alignment of the tick label based on the label's value.
+ * @param {Object} props - Tick properties.
+ * @param {number} props.x - The x-coordinate for the tick label.
+ * @param {number} props.y - The y-coordinate for the tick label.
+ * @param {Object} props.payload - The data for the tick label, including `value`.
+ * @returns {JSX.Element} Customized tick label for the radar chart.
+ */
+
+export const performanceRadarChartRenderCustomizedTick = ({
+  x,
+  y,
+  payload,
+}) => {
+  const newY = payload.value === "Endurance" ? y + 10 : y;
+
+  let textAnchor;
+  switch (payload.value) {
+    case "Intensité":
+    case "Endurance":
+      textAnchor = "middle";
+      break;
+    case "Vitesse":
+    case "Force":
+      textAnchor = "start";
+      break;
+    case "Cardio":
+    case "Énergie":
+      textAnchor = "end";
+      break;
+    default:
+      textAnchor = "middle";
+  }
+
+  return (
+    <text x={x} y={newY} textAnchor={textAnchor} fill="#fff">
+      <tspan x={x} dy="0em">
+        {payload.value}
+      </tspan>
+    </text>
   );
 };

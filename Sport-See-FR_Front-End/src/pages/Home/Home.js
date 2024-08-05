@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import {
   activityBarChartConfig,
+  performanceRadarChartConfig,
   scoreRadialBarChartConfig,
 } from "../../utils/chartsConfig";
 import {
@@ -12,8 +13,8 @@ import {
 import apiService from "../../services/apiService";
 
 import ActivityBarChart from "../../components/Charts/ActivityBarChart/ActivityBarChart";
+import PerformanceRadarChart from "../../components/Charts/PerformanceRadarChart/PerformanceRadarChart";
 import ScoreRadialBarChart from "../../components/Charts/ScoreRadialBarChart/ScoreRadialBarChart";
-import SimpleRadarChart from "../../components/Charts/SimpleRadarChart/SimpleRadarChart";
 import TinyLineChart from "../../components/Charts/TinyLineChart/TinyLineChart";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import Loader from "../../components/Loader/Loader";
@@ -127,14 +128,18 @@ function Home() {
   };
 
   /**
-   * Fetches user performance data from the API.
+   * Fetches user performance data, prepares the data for the radar chart, and updates the state.
+   * Handles errors by logging them and updating the error state.
+   * @function fetchUserPerformance
+   * @returns {void}
    */
   const fetchUserPerformance = () => {
     setTimeout(() => {
       apiService
         .getUserPerformance(userId)
         .then((data) => {
-          setPerformance(data);
+          const sortedData = performanceRadarChartConfig(data);
+          setPerformance({ ...data, sortedData });
         })
         .catch((error) => {
           console.error("Failed to fetch user performance:", error);
@@ -228,7 +233,11 @@ function Home() {
                       <div className="errors">{errors.performance}</div>
                     ) : (
                       <MeasurementCard
-                        chart={<SimpleRadarChart performance={performance} />}
+                        chart={
+                          <PerformanceRadarChart
+                            data={performance.sortedData}
+                          />
+                        }
                       />
                     )}
 
