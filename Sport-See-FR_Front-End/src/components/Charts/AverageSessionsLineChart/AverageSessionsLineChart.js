@@ -8,32 +8,22 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { getDayOfWeek } from "../../../utils/dataModelingTools.js";
-import "./TinyLineChart.scss";
+
+import {
+  CustomizedCursor,
+  averageSessionsLineChartRenderLegend,
+} from "../../../utils/chartsConfig";
+import "./AverageSessionsLineChart.scss";
 
 /**
- * TinyLineChart component
- * Displays the average duration of a session with a legend "Durée moyenne des sessions".
- *
- * @example
- *  const averageSessions = {
- *    data: {
- *      sessions: [
- *        { day: 'L', sessionLength: 30 },
- *        { day: 'M', sessionLength: 45 },
- *        ... other sessions
- *      ]
- *    }
- *  };
- *  <TinyLineChart averageSessions={averageSessions} />
- *
- * @returns {React.Component} A component that renders a line chart.
+ * AverageSessionsLineChart component.
+ * Renders a responsive line chart showing average session lengths with custom cursor.
+ * @param {Object} props - Component properties.
+ * @param {Object} props.data - Data to be displayed in the line chart, containing `preparedData`.
+ * @returns {JSX.Element} A responsive line chart component.
  */
-const TinyLineChart = ({ averageSessions }) => {
-  const items = averageSessions.data.sessions.map((item) => {
-    return { day: getDayOfWeek(item.day), sessionLength: item.sessionLength };
-  });
 
+const AverageSessionsLineChart = ({ data }) => {
   const [viewBox, setViewBox] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -55,38 +45,10 @@ const TinyLineChart = ({ averageSessions }) => {
     };
   }, []);
 
-  const CustomizedCursor = ({ points, viewBox }) => {
-    const { x } = points[0];
-    const borderRadius = 5;
-
-    // Rectangle width and height
-    const width = viewBox.width - x;
-    const height = viewBox.height;
-
-    // Create a path for the rectangle
-    const path = `
-      M${x},0
-      L${x + width - borderRadius},0
-      Q${x + width},0 ${x + width},${borderRadius}
-      L${x + width},${height - borderRadius}
-      Q${x + width},${height} ${x + width - borderRadius},${height}
-      L${x},${height}
-      Z
-    `;
-
-    return <path d={path} fill="rgba(178, 0, 0, 0.3)" />;
-  };
-
-  const renderLegend = () => {
-    return (
-      <p className="legend-of-TinyLineChart">Durée moyenne des sessions</p>
-    );
-  };
-
   return (
     <ResponsiveContainer id="chart-container" width="100%" height="100%">
       <LineChart
-        data={items}
+        data={data.preparedData}
         margin={{ top: 0, right: 15, left: 15, bottom: 0 }}
       >
         <XAxis
@@ -120,10 +82,13 @@ const TinyLineChart = ({ averageSessions }) => {
             opacity: "0.5",
           }}
         />
-        <Legend content={renderLegend} verticalAlign="top" align="left" />
+        <Legend
+          content={averageSessionsLineChartRenderLegend}
+          verticalAlign="top"
+          align="left"
+        />
       </LineChart>
     </ResponsiveContainer>
   );
 };
-
-export default TinyLineChart;
+export default AverageSessionsLineChart;

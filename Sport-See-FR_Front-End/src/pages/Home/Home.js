@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
 import {
-  activityBarChartConfig,
-  performanceRadarChartConfig,
-  scoreRadialBarChartConfig,
+  activityBarChartDataConfig,
+  averageSessionsLineChartDataConfig,
+  performanceRadarChartDataConfig,
+  scoreRadialBarChartDataConfig,
 } from "../../utils/chartsConfig";
 import {
   convertToKCal,
@@ -13,9 +14,9 @@ import {
 import apiService from "../../services/apiService";
 
 import ActivityBarChart from "../../components/Charts/ActivityBarChart/ActivityBarChart";
+import AverageSessionsLineChart from "../../components/Charts/AverageSessionsLineChart/AverageSessionsLineChart";
 import PerformanceRadarChart from "../../components/Charts/PerformanceRadarChart/PerformanceRadarChart";
 import ScoreRadialBarChart from "../../components/Charts/ScoreRadialBarChart/ScoreRadialBarChart";
-import TinyLineChart from "../../components/Charts/TinyLineChart/TinyLineChart";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import Loader from "../../components/Loader/Loader";
 import MacronutrientCard from "../../components/MacronutrientCard/MacronutrientCard";
@@ -66,7 +67,7 @@ function Home() {
       apiService
         .getUserInformations(userId)
         .then((data) => {
-          const formattedData = scoreRadialBarChartConfig(data);
+          const formattedData = scoreRadialBarChartDataConfig(data);
           setUserInfos({ ...data, formattedData });
         })
         .catch((error) => {
@@ -107,14 +108,19 @@ function Home() {
   };
 
   /**
-   * Fetches user average sessions from the API.
+   * fetchUserAverageSessions function.
+   * Fetches average session data for a user and processes it for display.
+   * @returns {void}
    */
   const fetchUserAverageSessions = () => {
     setTimeout(() => {
       apiService
         .getUserAverageSessions(userId)
         .then((data) => {
-          setAverageSessions(data);
+          const preparedData = averageSessionsLineChartDataConfig(
+            data.data.sessions
+          );
+          setAverageSessions({ ...data, preparedData });
         })
         .catch((error) => {
           console.error("Failed to fetch user average sessions:", error);
@@ -138,7 +144,7 @@ function Home() {
       apiService
         .getUserPerformance(userId)
         .then((data) => {
-          const sortedData = performanceRadarChartConfig(data);
+          const sortedData = performanceRadarChartDataConfig(data);
           setPerformance({ ...data, sortedData });
         })
         .catch((error) => {
@@ -203,7 +209,7 @@ function Home() {
                       chart={
                         <ActivityBarChart
                           data={activity.data.sessions}
-                          config={activityBarChartConfig}
+                          config={activityBarChartDataConfig}
                         />
                       }
                     />
@@ -219,7 +225,7 @@ function Home() {
                     ) : (
                       <MeasurementCard
                         chart={
-                          <TinyLineChart averageSessions={averageSessions} />
+                          <AverageSessionsLineChart data={averageSessions} />
                         }
                       />
                     )}

@@ -1,5 +1,6 @@
 import {
   convertToPercent,
+  getDayOfWeek,
   translateEnglishToFrench,
 } from "./dataModelingTools";
 
@@ -23,7 +24,7 @@ import {
  * @property {string} legendPayload[].color - Color of the legend item.
  */
 
-export const activityBarChartConfig = {
+export const activityBarChartDataConfig = {
   title: "Activité quotidienne",
   yAxis1: {
     dataKey: "kilogram",
@@ -61,7 +62,7 @@ export const activityBarChartConfig = {
  * @returns {Object[]} Array of configuration objects for the RadialBarChart.
  */
 
-export const scoreRadialBarChartConfig = (userInfos) => [
+export const scoreRadialBarChartDataConfig = (userInfos) => [
   {
     id: 1,
     todayScore: (userInfos.data.score ?? userInfos.data.todayScore) * 100,
@@ -104,7 +105,7 @@ export const scoreRadialBarChartRenderLegend = (userInfos) => {
  * @returns {Array} Sorted and translated radar chart data.
  */
 
-export const performanceRadarChartConfig = (performance) => {
+export const performanceRadarChartDataConfig = (performance) => {
   const { data: performanceItems, kind: kindMap } = performance.data;
 
   const translatedData = performanceItems.map((item) => {
@@ -167,3 +168,66 @@ export const performanceRadarChartRenderCustomizedTick = ({
     </text>
   );
 };
+
+/** AVERAGE SESSIONS LINE CHART */
+
+/**
+ * Transforms session data into a format suitable for a line chart.
+ * @param {Array<Object>} sessions - Array of session data objects.
+ * @param {string} sessions[].day - The day of the week for the session.
+ * @param {number} sessions[].sessionLength - The length of the session in minutes.
+ * @returns {Array<Object>} Transformed session data for the line chart.
+ * @property {string} day - The transformed day of the week.
+ * @property {number} sessionLength - The session length in minutes.
+ */
+
+export const averageSessionsLineChartDataConfig = (sessions) =>
+  sessions.map((item) => ({
+    day: getDayOfWeek(item.day),
+    sessionLength: item.sessionLength,
+  }));
+
+/**
+ * Custom cursor for chart highlighting.
+ * Renders a path element that represents a rectangle with rounded corners, highlighting the area under the cursor.
+ * @param {Object} props - Component properties.
+ * @param {Array<Object>} props.points - Array of points where the cursor is located.
+ * @param {Object} props.viewBox - Viewbox dimensions of the chart.
+ * @param {number} props.viewBox.width - Width of the viewbox.
+ * @param {number} props.viewBox.height - Height of the viewbox.
+ * @returns {JSX.Element} SVG path element for the custom cursor.
+ */
+
+export const CustomizedCursor = ({ points, viewBox }) => {
+  const { x } = points[0];
+  const borderRadius = 5;
+
+  // Rectangle width and height
+  const width = viewBox.width - x;
+  const height = viewBox.height;
+
+  // Create a path for the rectangle
+  const path = `
+    M${x},0
+    L${x + width - borderRadius},0
+    Q${x + width},0 ${x + width},${borderRadius}
+    L${x + width},${height - borderRadius}
+    Q${x + width},${height} ${x + width - borderRadius},${height}
+    L${x},${height}
+    Z
+  `;
+
+  return <path d={path} fill="rgba(178, 0, 0, 0.3)" />;
+};
+
+/**
+ * Custom legend for the average sessions line chart.
+ * Renders a paragraph element that provides a title or description for the chart.
+ * @returns {JSX.Element} Paragraph element with the legend text.
+ */
+
+export const averageSessionsLineChartRenderLegend = () => (
+  <p className="legend-of-AverageSessionsLineChart">
+    Durée moyenne des sessions
+  </p>
+);
